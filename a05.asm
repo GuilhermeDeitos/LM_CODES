@@ -26,6 +26,8 @@ carry:
     add bx, 1 ; 0 e carry 1 no 17º bit
 
 
+
+
 fim:
     mov rax, 60
     mov rdi, 0

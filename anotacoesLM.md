@@ -94,6 +94,54 @@ res + (letra que corresponde o tamanho do dado) + quantas reservas
     NOT/NEG r/m
 ```
 
+### SHL e SHR
+- SHL/SHR dest, numDeslocamento
+    * SHL -> Deslocamento logico para esquerda
+    * SHR -> Deslocamento logico para direita
+        * (Entrada à direita é '0')
+        * Usado em aritmética não sinalizada
+
+
+
+### SAL e SAR
+- SAL/SAR dest, numDeslocamento
+    * SAL -> Deslocamento aritmética para esquerda
+    * SAR -> Deslocamento aritmética para direita
+        * bit de entrada à esquerda é mantido
+        * bit mais significativo altera sinal do número
+        * Usado em aritmética sinalizada
+
+### MUL E IMUL
+- MUL -> não sinalizados
+- Operação:
+    * RDX:RAX = RAX * r64/m64(para 64 bits)
+        * RAX implicito
+        * r64/m64 explicito
+        * resultado: RDX:RAX/EDX:EAX/DX:AX
+- IMUL -> sinalizados
+- Operação:
+    * Explicito: r, r/m(64, 32 ou 16bits)
+    * resultado: r
+
+```assembly
+    MUL R/M
+    IMUL reg, r/m 
+```
+
+### DIV E IDIV
+- DIV -> divisão de inteiros não sinalizados
+- IDIV -> Divisão de inteiros sinalizados
+- Operação:
+    * RAX = RDX:RAX / r/m (Quociente)
+    * RDX = RDX:RAX / r/m (Resto)
+- Se o numero for positivo, zerar EDX, se for negativo, -1 em EDX
+
+```assembly
+    DIV R/M
+    IDIV reg, r/m 
+```
+
+
 
 #### Registrador Flags
 - Overflow
